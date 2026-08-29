@@ -1,0 +1,13 @@
+{
+  "name": "loja-cosmeticos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "Harodi Kadima",
+  "license": "ISC",
+  "type": "commonjs"
+}
