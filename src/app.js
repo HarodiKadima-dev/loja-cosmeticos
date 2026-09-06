@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+
 //importando a rota
 const produtoRoutes = require("./routes/produto.routes");
 
