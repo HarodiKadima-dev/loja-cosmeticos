@@ -51,8 +51,54 @@ async function criarProduto(dados){
     }
 }
 
+async function atualizarProduto(id, dados){
+    try{
+        const resultado = await pool.query(
+            `UPDATE produtos SET 
+            nome = $1, 
+            descricao =$2,
+            preco = $3,
+            stock = $4, 
+            imagem =$5
+            WHERE id = $6
+            RETURNING *`,
+            [
+            dados.nome,
+            dados.descricao,
+            dados.preco,
+            dados.stock,
+            dados.imagem,
+            id
+            ]
+            );
+            return resultado.rows[0];
+    }catch(erro){
+    console.log("Erro ao buscar produtos:",erro);
+    throw erro;
+}
+
+}
+
+async function deletarProduto(id){
+    try{
+        const resultado = await pool.query(`DELETE FROM produtos 
+             WHERE id = $1
+             RETURNING *`,
+             [id]
+             )
+             
+             return resultado.rows[0];
+             
+    }catch(erro){
+    console.log("Erro ao deletar produto:",erro);
+    throw erro;
+}
+    
+}
 module.exports = {
 buscarProdutos,
 buscarProdutoPorId,
-criarProduto
+criarProduto,
+atualizarProduto,
+deletarProduto
 };

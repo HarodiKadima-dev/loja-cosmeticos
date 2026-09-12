@@ -55,9 +55,56 @@ async function criarProduto(req,res){
     }
 }
 
+async function atualizarProduto(req,res){
+    try{
+        const {id} = req.params;
+        const dados = req.body;
+        
+        const produto = await produtoService.atualizarProduto(id, dados);
+        
+        res.json(produto);
+        
+    }catch(erro){
+        console.log("Erro ao atualizar produto:", erro);
+        
+        if(erro.message === "Stock não pode ser negativo"){
+           return res.status(400).json({
+                erro:erro.message
+            });
+        }
+        
+        res.status(500).json({
+            erro:"Erro ao atualizar produto"
+        });
+    }
+}
 
+async function deletarProduto(req,res){
+    try{
+        const {id} = req.params;
+        
+        const produto = await produtoService.deletarProduto(id);
+        if(!produto){
+            return res.status(404).json({
+                erro:"Produto não encontrado"
+            });
+        }
+        
+        res.json(produto);
+        
+    }catch(erro){
+        console.log("Erro ao deletar produto:", erro);
+        
+        res.status(500).json({
+            erro:"Erro ao deletar produto"
+        });
+    }
+        
+    }
 module.exports={
     listarProdutos,
     buscarProdutoPorId,
-    criarProduto
+    criarProduto,
+    atualizarProduto,
+    deletarProduto
 };

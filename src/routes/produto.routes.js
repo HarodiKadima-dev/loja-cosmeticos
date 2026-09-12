@@ -10,4 +10,8 @@ router.get("/produtos/:id", produtoController.buscarProdutoPorId);
 //a rota post
 router.post("/produtos",produtoController.criarProduto);
 
+// a rota put 
+router.put("/produtos/:id", produtoController.atualizarProduto);
+//a rota delete
+router.delete("/produtos/:id", produtoController.deletarProduto);
 module.exports= router;
