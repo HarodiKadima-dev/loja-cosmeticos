@@ -1,5 +1,5 @@
 //conectar ao banco de dados
-const pool = require("../../database/db");
+const { pool } = require("../../database/db");
 
 async function buscarProdutos(){
     try{
@@ -26,6 +26,20 @@ async function buscarProdutoPorId(id){
         console.log("Erro ao buscar produto por ID:", erro);
         throw erro;
     }
+}
+
+async function buscarProdutoParaTransacao(id,client){
+    const resultado = await client.query(`SELECT * FROM produtos WHERE id = $1 FOR UPDATE`,
+    [id]
+    );
+    return resultado.rows[0];
+}
+
+async function baixarStock(id, quantidade, client){
+    const resultado = await client.query(`UPDATE produtos SET stock = stock - $1 WHERE id = $2 RETURNING *`,
+    [quantidade, id]
+    );
+    return resultado.rows[0];
 }
 
 async function criarProduto(dados){
@@ -100,5 +114,7 @@ buscarProdutos,
 buscarProdutoPorId,
 criarProduto,
 atualizarProduto,
-deletarProduto
+deletarProduto,
+buscarProdutoParaTransacao,
+baixarStock
 };

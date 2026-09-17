@@ -7,4 +7,11 @@ const pool = new Pool({
     
 });
 
-module.exports = pool;
+async function obterClient(){
+   return await pool.connect(); 
+}
+
+module.exports = {
+    pool,
+    obterClient
+}

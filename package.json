@@ -1,7 +1,7 @@
 {
   "name": "loja-cosmeticos",
   "version": "1.0.0",
-  "description": "",
+  "description": "Catalogo para Vendas online",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js"
@@ -9,5 +9,11 @@
   "keywords": [],
   "author": "Harodi Kadima",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.23.0"
+  }
 }

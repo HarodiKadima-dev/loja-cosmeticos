@@ -1,107 +1,79 @@
 const produtoRepository = require("../repositories/produto.repositories.js");
 const produtoService = require("../services/produto.services.js");
-async function listarProdutos(req,res){
-    try{
-    const produtos = await produtoRepository.buscarProdutos();
-    
-    res.json(produtos);
-    
-}catch(erro){
-    console.log("Erro ao listar produtos:",erro);
-    res.status(500).json({
-        erro:"Erro ao buscar produtos"
-    });
+
+async function listarProdutos(req, res, next){
+    try {
+        const produtos = await produtoRepository.buscarProdutos();
+
+        res.json(produtos);
+
+    } catch (erro) {
+        next(erro);
+    }
 }
 
-}
+async function buscarProdutoPorId(req, res, next){
+    try {
+        const { id } = req.params;
 
-async function buscarProdutoPorId(req,res) {
-    try{
-        const {id} = req.params;
-        
         const produto = await produtoRepository.buscarProdutoPorId(id);
-        
-        if(!produto){
-            
-            return res.status(404).json({
-                erro:"Produto não encontrado"
-            });
+
+        if (!produto) {
+            throw new Error("Produto não encontrado");
         }
-        
+
         res.json(produto);
-        
-    }catch(erro){
-        console.log("Erro ao buscar produto por ID:", erro);
-        
-        res.status(500).json({
-            erro:"Erro ao buscar produto"
-        });
+
+    } catch (erro) {
+        next(erro);
     }
 }
- 
-async function criarProduto(req,res){
-    try{
+
+async function criarProduto(req, res, next){
+    try {
         const dados = req.body;
-        
+
         const produto = await produtoService.criarProduto(dados);
-        
+
         res.status(201).json(produto);
-    }catch(erro){
-        console.log("Erro ao criar produto:", erro);
-        
-        res.status(500).json({
-            erro:"Erro ao criar produto"
-        });
+
+    } catch (erro) {
+        next(erro);
     }
 }
 
-async function atualizarProduto(req,res){
-    try{
-        const {id} = req.params;
+async function atualizarProduto(req, res, next){
+    try {
+        const { id } = req.params;
         const dados = req.body;
-        
+
         const produto = await produtoService.atualizarProduto(id, dados);
-        
+
         res.json(produto);
-        
-    }catch(erro){
-        console.log("Erro ao atualizar produto:", erro);
-        
-        if(erro.message === "Stock não pode ser negativo"){
-           return res.status(400).json({
-                erro:erro.message
-            });
-        }
-        
-        res.status(500).json({
-            erro:"Erro ao atualizar produto"
-        });
+
+    } catch (erro) {
+        next(erro);
     }
 }
 
-async function deletarProduto(req,res){
-    try{
-        const {id} = req.params;
-        
+async function deletarProduto(req, res, next){
+    try {
+        const { id } = req.params;
+
         const produto = await produtoService.deletarProduto(id);
-        if(!produto){
-            return res.status(404).json({
-                erro:"Produto não encontrado"
-            });
+
+        if (!produto) {
+            throw new Error("Produto não encontrado");
         }
-        
+
         res.json(produto);
-        
-    }catch(erro){
-        console.log("Erro ao deletar produto:", erro);
-        
-        res.status(500).json({
-            erro:"Erro ao deletar produto"
-        });
+
+    } catch (erro) {
+        next(erro);
     }
-        
-    }
-module.exports={
+}
+
+module.exports = {
     listarProdutos,
     buscarProdutoPorId,
     criarProduto,

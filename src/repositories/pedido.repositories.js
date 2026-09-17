@@ -1,7 +1,7 @@
-const pool = require("../../database/db");
+const { pool } = require("../../database/db");
 
-async function criarPedido(dados){
-    const resultado = await pool.query(
+async function criarPedido(dados,client){
+    const resultado = await client.query(
         `INSERT INTO pedidos
         (nome_cliente, telefone)
         VALUES ($1, $2)
