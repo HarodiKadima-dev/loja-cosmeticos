@@ -72,11 +72,24 @@ async function deletarProduto(req, res, next){
         next(erro);
     }
 }
+async function atualizarStock(req, res, next){
+    try {
+        const { id } = req.params;
+        const { stock } = req.body;
+
+        const produto = await produtoService.atualizarStock(id, stock);
+
+        res.json(produto);
+    } catch (erro) {
+        next(erro);
+    }
+}
 
 module.exports = {
     listarProdutos,
     buscarProdutoPorId,
     criarProduto,
     atualizarProduto,
-    deletarProduto
+    deletarProduto,
+    atualizarStock
 };

@@ -25,8 +25,20 @@ async function buscarPedidoPorId(req, res, next){
         next(erro);
     }
 }
+async function atualizarStatusPedido(req, res, next){
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
 
+        const pedido = await pedidoService.atualizarStatusPedido(id, status);
+
+        res.json(pedido);
+    } catch (erro) {
+        next(erro);
+    }
+}
 module.exports = {
     criarPedido,
-    buscarPedidoPorId
+    buscarPedidoPorId,
+    atualizarStatusPedido
 };

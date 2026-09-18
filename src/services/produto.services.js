@@ -18,8 +18,23 @@ async function deletarProduto(id){
     
     return produto;
 }
+async function atualizarStock(id, stock){
+
+    if(!Number.isInteger(stock) || stock < 0){
+        throw new Error("Stock inválido");
+    }
+
+    const produto = await produtoRepository.atualizarStock(id, stock);
+
+    if(!produto){
+        throw new Error("Produto não encontrado");
+    }
+
+    return produto;
+}
 module.exports = {
     criarProduto,
     atualizarProduto,
-    deletarProduto
+    deletarProduto,
+    atualizarStock
 };

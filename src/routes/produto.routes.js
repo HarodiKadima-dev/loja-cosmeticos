@@ -14,4 +14,9 @@ router.post("/produtos",produtoController.criarProduto);
 router.put("/produtos/:id", produtoController.atualizarProduto);
 //a rota delete
 router.delete("/produtos/:id", produtoController.deletarProduto);
+//rota patch
+router.patch(
+    "/produtos/:id/stock",
+    produtoController.atualizarStock
+);
 module.exports= router;

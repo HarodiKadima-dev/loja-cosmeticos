@@ -109,6 +109,17 @@ async function deletarProduto(id){
 }
     
 }
+async function atualizarStock(id, stock){
+    const resultado = await pool.query(
+        `UPDATE produtos
+         SET stock = $1
+         WHERE id = $2
+         RETURNING *`,
+        [stock, id]
+    );
+
+    return resultado.rows[0];
+}
 module.exports = {
 buscarProdutos,
 buscarProdutoPorId,
@@ -116,5 +127,6 @@ criarProduto,
 atualizarProduto,
 deletarProduto,
 buscarProdutoParaTransacao,
-baixarStock
+baixarStock,
+atualizarStock
 };

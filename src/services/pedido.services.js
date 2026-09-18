@@ -79,10 +79,40 @@ async function buscarPedidoPorId(id){
     if(!pedido){
         throw new Error("Pedido não encontrado");
     }
+    
+    const itens = await itemPedidoRepository.buscarItensPorPedidoId(id);
+    
+const total = itens.reduce((soma,item)=>{
+    return soma + Number(item.preco) * item.quantidade;
+},0);
+    return {
+        pedido,
+        itens,
+        total
+    };
+}
+  async function atualizarStatusPedido(id, status){
+    const estadosPermitidos = [
+        "Pendente",
+        "Confirmado",
+        "Concluído",
+        "Cancelado"
+    ];
+
+    if(!estadosPermitidos.includes(status)){
+        throw new Error("Estado do pedido inválido");
+    }
+
+    const pedido = await pedidoRepository.atualizarStatusPedido(id, status);
+
+    if(!pedido){
+        throw new Error("Pedido não encontrado");
+    }
+
     return pedido;
 }
-  
 module.exports = {
     criarPedido,
-    buscarPedidoPorId
+    buscarPedidoPorId,
+    atualizarStatusPedido
 };

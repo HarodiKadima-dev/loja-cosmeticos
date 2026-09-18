@@ -24,7 +24,19 @@ async function buscarPedidoPorId(id){
 
     return resultado.rows[0];
 }
+async function atualizarStatusPedido(id, status){
+    const resultado = await pool.query(
+        `UPDATE pedidos
+         SET status = $1
+         WHERE id = $2
+         RETURNING *`,
+        [status, id]
+    );
+
+    return resultado.rows[0];
+}
 module.exports ={
     criarPedido,
-    buscarPedidoPorId
+    buscarPedidoPorId,
+    atualizarStatusPedido
 }
