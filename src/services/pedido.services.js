@@ -53,8 +53,17 @@ if(item.quantidade > produto.stock){
     
 //confirma e guarda as alterações da transação
 await client.query("COMMIT");
-    return pedido;
 
+//trazer o totak de pedidos feitos
+const itens = await itemPedidoRepository.buscarItensPorPedidoId(pedido.id);
+const total = itens.reduce((soma,item)=>{
+    return soma + Number(item.preco) * item.quantidade;
+},0);
+    return {
+        pedido,
+        itens,
+        total
+};
 }catch(erro){
     //desfaz as alterações da transação em caso de erro
    await client.query("ROLLBACK");
