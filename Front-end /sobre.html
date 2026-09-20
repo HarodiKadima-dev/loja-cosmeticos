@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós — Kadima Beauty</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">KADIMA BEAUTY</a>
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#produtos">Produtos</a>
+      <a href="sobre.html" class="active">Sobre Nós</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="cart-button" type="button" aria-label="Abrir carrinho">
+      <i class="fa-solid fa-cart-shopping"></i><span>Carrinho</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="sobre-pagina">
+      <div class="sobre-imagem">
+        <img src="sobre-img.jpg" alt="Kadima Beauty" class="sobre-img">
+      </div>
+      <div class="sobre-conteudo">
+        <p class="subtitulo">SOBRE NÓS</p>
+        <h1>Beleza do seu jeito.</h1>
+        <p>A Kadima Beauty nasceu para oferecer produtos que ajudam cada pessoa a expressar a sua beleza e personalidade.</p>
+        <p>Selecionamos com cuidado cosméticos, perfumes e acessórios para que encontre o que combina consigo.</p>
+        <a href="index.html#produtos" class="hero-button">Ver produtos</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="footer-brand">
+      <h2>Kadima Beauty</h2>
+      <p>Realce a sua beleza do seu jeito.</p>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-item">
+      <i class="fa-solid fa-house"></i><span>Home</span>
+    </a>
+    <a href="index.html#produtos" class="bottom-nav-item">
+      <i class="fa-solid fa-bag-shopping"></i><span>Produtos</span>
+    </a>
+    <button type="button" class="bottom-nav-item cart-nav-button" aria-label="Abrir carrinho">
+      <i class="fa-solid fa-cart-shopping"></i><span>Carrinho</span>
+    </button>
+    <a href="sobre.html" class="bottom-nav-item active">
+      <i class="fa-solid fa-user"></i><span>Sobre</span>
+    </a>
+  </nav>
+
+  <aside id="carrinho" class="cart-panel">
+    <div class="cart-header">
+      <h2>Seu carrinho</h2>
+      <button type="button" aria-label="Fechar carrinho">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <strong>0 Kz</strong>
+      </div>
+      <button type="button" class="checkout-button">
+        Finalizar pedido <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

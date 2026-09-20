@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kadima Beauty</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="response.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="#inicio" class="logo">KADIMA BEAUTY</a>
+    <nav class="desktop-nav">
+      <a href="#inicio">Home</a>
+      <a href="#produtos">Produtos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="cart-button" type="button" aria-label="Abrir carrinho">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Carrinho</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="hero-conteudo">
+        <h1 class="hero-marca">KADIMA BEAUTY</h1>
+        <h2>Realce a sua beleza do seu jeito.</h2>
+        <p>Descubra produtos escolhidos para combinar com o seu estilo.</p>
+        <a href="#produtos" class="hero-button">Ver produtos</a>
+      </div>
+      <div class="hero-image">
+        <img src="hero-img.jpg" alt="Kadima Beauty" class="hero-img">
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="produtos" class="catalogo">
+      <div class="catalogo-header">
+        <div>
+          <p>Explore</p>
+          <h2>Nosso catálogo</h2>
+        </div>
+        <form class="search-form">
+          <input type="search" placeholder="Pesquisar produtos" aria-label="Pesquisar produtos">
+          <button type="submit" aria-label="Pesquisar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- CATEGORIAS -->
+      <nav class="categorias">
+        <button type="button" class="categoria-active">Todos</button>
+        <button type="button">Perfumes</button>
+        <button type="button">Cremes</button>
+        <button type="button">Batons</button>
+        <button type="button">Cosméticos</button>
+      </nav>
+
+      <!-- DESTAQUE -->
+      <section class="produto-secao destaque">
+        <div class="secao-header">
+          <div>
+            <p>SELEÇÃO KADIMA</p>
+            <h2>Em destaque</h2>
+          </div>
+        </div>
+        <div class="produtos-grid">
+          <!-- Cartões gerados pelo JS -->
+        </div>
+      </section>
+
+      <!-- PERFUMES -->
+      <section class="produto-secao">
+        <div class="secao-header"><h2>Perfumes</h2></div>
+        <div class="produtos-grid"></div>
+      </section>
+
+      <!-- CREMES -->
+      <section class="produto-secao">
+        <div class="secao-header"><h2>Cremes</h2></div>
+        <div class="produtos-gr7id"></div>
+      </section>
+
+      <!-- BATONS -->
+      <section class="produto-secao">
+        <div class="secao-header"><h2>Batons</h2></div>
+        <div class="produtos-grid"></div>
+      </section>
+
+      <!-- COSMÉTICOS -->
+      <section class="produto-secao">
+        <div class="secao-header"><h2>Cosméticos</h2></div>
+        <div class="produtos-grid"></div>
+      </section>
+
+      <!-- TODOS OS PRODUTOS -->
+      <section class="produto-secao todos-produtos">
+        <div class="secao-header">
+          <div>
+            <p>CATÁLOGO COMPLETO</p>
+            <h2>Todos os produtos</h2>
+          </div>
+        </div>
+        <div class="produtos-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contacto">
+    <div class="footer-brand">
+      <h2>Kadima Beauty</h2>
+      <p>Realce a sua beleza do seu jeito.</p>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </footer>
+
+  <!-- NAVEGAÇÃO INFERIOR - MOBILE -->
+  <nav class="bottom-nav">
+    <a href="#inicio" class="bottom-nav-item active">
+      <i class="fa-solid fa-house"></i><span>Home</span>
+    </a>
+    <a href="#produtos" class="bottom-nav-item">
+      <i class="fa-solid fa-bag-shopping"></i><span>Produtos</span>
+    </a>
+    <button type="button" class="bottom-nav-item cart-nav-button" aria-label="Abrir carrinho">
+      <i class="fa-solid fa-cart-shopping"></i><span>Carrinho</span>
+    </button>
+    <button type="button" class="bottom-nav-item" aria-label="Abrir menu">
+      <i class="fa-solid fa-bars"></i><span>Mais</span>
+    </button>
+  </nav>
+
+  <!-- PAINEL DO CARRINHO -->
+  <aside id="carrinho" class="cart-panel">
+    <div class="cart-header">
+      <h2>Seu carrinho</h2>
+      <button type="button" aria-label="Fechar carrinho">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <strong>0 Kz</strong>
+      </div>
+      <button type="button" class="checkout-button">
+        Finalizar pedido <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

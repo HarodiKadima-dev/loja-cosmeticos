@@ -1,0 +1,161 @@
+/* NAVEGAÇÃO(Mobile)*/
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid var(--borda);
+  background: var(--branco);
+  z-index: 999;
+  padding: 0.6rem 0;
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  font-size: 0.7rem;
+}
+
+.bottom-nav-item i {
+  font-size: 1.1rem;
+}
+
+.bottom-nav-item.active {
+  color: var(--claro);
+  opacity: 1;
+}
+
+/*Carrinho lateral*/
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: var(--branco);
+  width: 100%;
+  max-width: 360px;
+  height: 100vh;
+  box-shadow: -4px 0 16px var(--sombra);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-panel.aberto {
+  transform: translateX(0);
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--borda);
+}
+
+.cart-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto; 
+  padding: 1rem 1.5rem;
+}
+
+.cart-footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--borda);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--claro);
+  transition: opacity 0.2s;
+  color: var(--branco);
+}
+
+.checkout-button:hover {
+  opacity: 0.9;
+}
+
+footer {
+  text-align: center;
+  padding: 3rem 1.5rem 9rem;
+}
+
+.footer-brand h2 {
+  font-family: "Cormorant Garamond", serif;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--claro);
+}
+
+.footer-brand p {
+  color: var(--texto-2);
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.3rem;
+  color: var(--claro);
+}
+
+/*Versão Computador*/
+@media (min-width: 768px) {
+  .header {
+    display: flex;
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+
+  .hero {
+    flex-direction: row;
+    padding: 4rem 5rem;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero-conteudo {
+    flex: 1;
+  }
+
+  .hero-image {
+    flex: 1;
+  }
+
+  .produtos-grid {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  .catalogo {
+    padding: 3rem 5rem 4rem;
+  }
+}
