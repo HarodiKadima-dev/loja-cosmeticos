@@ -22,7 +22,8 @@
     <button class="cart-button" type="button" aria-label="Abrir carrinho">
       <i class="fa-solid fa-cart-shopping"></i>
       <span>Carrinho</span>
-    </button>
+    <span class="cart-badge">0</span>
+</button>
   </header>
 
   <main>
@@ -64,7 +65,7 @@
       </nav>
 
       <!-- DESTAQUE -->
-      <section class="produto-secao destaque">
+      <section class="produto-secao destaque" data-categoria="destaque">
         <div class="secao-header">
           <div>
             <p>SELEÇÃO KADIMA</p>
@@ -77,31 +78,31 @@
       </section>
 
       <!-- PERFUMES -->
-      <section class="produto-secao">
+      <section class="produto-secao" data-categoria="perfumes">
         <div class="secao-header"><h2>Perfumes</h2></div>
         <div class="produtos-grid"></div>
       </section>
 
       <!-- CREMES -->
-      <section class="produto-secao">
+      <section class="produto-secao" data-categoria="cremes">
         <div class="secao-header"><h2>Cremes</h2></div>
-        <div class="produtos-gr7id"></div>
+        <div class="produtos-grid"></div>
       </section>
 
       <!-- BATONS -->
-      <section class="produto-secao">
+      <section class="produto-secao" data-categoria="batons">
         <div class="secao-header"><h2>Batons</h2></div>
         <div class="produtos-grid"></div>
       </section>
 
       <!-- COSMÉTICOS -->
-      <section class="produto-secao">
+      <section class="produto-secao" data-categoria="cosméticos">
         <div class="secao-header"><h2>Cosméticos</h2></div>
         <div class="produtos-grid"></div>
       </section>
 
       <!-- TODOS OS PRODUTOS -->
-      <section class="produto-secao todos-produtos">
+      <section class="produto-secao todos-produtos" data-categoria="todos">
         <div class="secao-header">
           <div>
             <p>CATÁLOGO COMPLETO</p>
@@ -136,7 +137,8 @@
     </a>
     <button type="button" class="bottom-nav-item cart-nav-button" aria-label="Abrir carrinho">
       <i class="fa-solid fa-cart-shopping"></i><span>Carrinho</span>
-    </button>
+    <span class="cart-badge cart-badge-mobile">0</span>
+</button>
     <button type="button" class="bottom-nav-item" aria-label="Abrir menu">
       <i class="fa-solid fa-bars"></i><span>Mais</span>
     </button>
@@ -154,14 +156,19 @@
     <div class="cart-footer">
       <div class="cart-total">
         <span>Subtotal</span>
-        <strong>0 Kz</strong>
+        <strong class="cart-total-valor">0 Kz</strong>
       </div>
+      
+      <a href="#produtos" class="continuar-comprando">
+    <i class="fa-solid fa-arrow-left"></i>
+    Continuar comprando
+</a>
       <button type="button" class="checkout-button">
         Finalizar pedido <i class="fa-solid fa-arrow-right"></i>
       </button>
     </div>
   </aside>
 
-  <script src="script.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
