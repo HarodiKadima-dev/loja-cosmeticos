@@ -1,14 +1,37 @@
+
 const express = require("express");
 const router = express.Router();
 
-//conectar o controllers
+// Controller
 const pedidoController = require("../controllers/pedido.controllers.js");
 
-//a rota post
-router.post("/pedidos",pedidoController.criarPedido);
-//a rota get
-router.get("/pedidos/:id", pedidoController.buscarPedidoPorId);
+// Middleware de autenticação
+const verificarAdmin = require("../middlewares/verificarAdmin");
 
-router.patch("/pedidos/:id/status", pedidoController.atualizarStatusPedido);
+// Todas estas operações são exclusivas do administrador
+
+router.get(
+    "/pedidos",
+    verificarAdmin,
+    pedidoController.buscarTodosPedidos
+);
+
+router.get(
+    "/pedidos/:id",
+    verificarAdmin,
+    pedidoController.buscarPedidoPorId
+);
+
+router.post(
+    "/pedidos",
+    verificarAdmin,
+    pedidoController.criarPedido
+);
+
+router.patch(
+    "/pedidos/:id/status",
+    verificarAdmin,
+    pedidoController.atualizarStatusPedido
+);
 
 module.exports = router;

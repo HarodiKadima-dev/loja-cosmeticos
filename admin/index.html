@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FCF8F6">
+
+    <title>Administração | Kadima Beauty</title>
+
+    <!-- Ícones reais do Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- Estilos do painel -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOGIN DO ADMINISTRADOR -->
+    <section id="login-section" class="login-page">
+        <form id="login-form" class="login-card">
+            <div class="brand-mark">KB</div>
+
+            <p class="eyebrow">KADIMA BEAUTY</p>
+            <h1>Bem-vinda de volta</h1>
+            <p class="muted">Inicia sessão para gerir a tua loja.</p>
+
+            <label for="email">Email</label>
+            <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="admin@kadimabeauty.com"
+                autocomplete="username"
+                required
+            >
+
+            <label for="senha">Palavra-passe</label>
+            <input
+                id="senha"
+                name="senha"
+                type="password"
+                placeholder="Introduz a tua palavra-passe"
+                autocomplete="current-password"
+                required
+            >
+
+            <button
+                type="submit"
+                id="login-button"
+                class="primary-button">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Entrar
+            </button>
+
+            <p id="login-message" class="message" role="alert"></p>
+        </form>
+    </section>
+
+
+    <!-- PAINEL ADMINISTRATIVO -->
+    <section id="dashboard-section" class="app hidden">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar" id="sidebar">
+
+            <a href="#" class="brand">
+                <span class="brand-mark">KB</span>
+
+                <span class="brand-text">
+                    <strong>Kadima Beauty</strong>
+                    <small>Painel administrativo</small>
+                </span>
+            </a>
+
+            <div class="sidebar-label">MENU PRINCIPAL</div>
+
+            <nav class="navigation">
+
+                <button
+                    class="nav-link active"
+                    data-page="dashboard"
+                    type="button"
+                >
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </button>
+
+                <button
+                    class="nav-link"
+                    data-page="produtos"
+                    type="button"
+                >
+                    <i class="fa-solid fa-box-open"></i>
+                    <span>Produtos</span>
+                </button>
+
+                <button
+                    class="nav-link"
+                    data-page="stock"
+                    type="button"
+                >
+                    <i class="fa-solid fa-warehouse"></i>
+                    <span>Stock</span>
+                </button>
+
+                <button
+                    class="nav-link"
+                    data-page="encomendas"
+                    type="button"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Encomendas</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-divider"></div>
+
+                <button
+                    id="logout-button"
+                    class="logout-button"
+                    type="button"
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Terminar sessão</span>
+                </button>
+
+                <div class="sidebar-footer">
+                    <span class="status-dot"></span>
+                    Sistema administrativo
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="topbar">
+
+                <button
+                    id="menu-toggle"
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Abrir menu"
+                    aria-controls="sidebar"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="topbar-heading">
+                    <p class="eyebrow">ÁREA DE GESTÃO</p>
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div class="admin-info">
+                        <strong>Administrador</strong>
+                        <small>Gestão da loja</small>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- MENSAGENS DA APLICAÇÃO -->
+            <div
+                id="app-message"
+                class="message"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- DASHBOARD -->
+            <section id="page-dashboard" class="page">
+
+                <div class="welcome">
+
+                    <div class="welcome-content">
+                        <p class="eyebrow">VISÃO GERAL</p>
+
+                        <h2>A tua loja, num só lugar.</h2>
+
+                        <p class="muted">
+                            Acompanha os produtos, o stock e as encomendas
+                            da Kadima Beauty.
+                        </p>
+                    </div>
+
+                    <div class="welcome-decoration">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </div>
+
+                </div>
+
+
+                <!-- CARTÕES DE ESTATÍSTICAS -->
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Total de produtos</span>
+
+                            <div class="stat-icon icon-products">
+                                <i class="fa-solid fa-boxes-stacked"></i>
+                            </div>
+                        </div>
+
+                        <strong id="total-produtos">—</strong>
+
+                        <small>Produtos registados</small>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Stock baixo</span>
+
+                            <div class="stat-icon icon-stock">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                        </div>
+
+                        <strong id="stock-baixo">—</strong>
+
+                        <small>Stock igual ou inferior a 3</small>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Encomendas pendentes</span>
+
+                            <div class="stat-icon icon-orders">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                        </div>
+
+                        <strong id="encomendas-pendentes">—</strong>
+
+                        <small>Aguardam tratamento</small>
+                    </article>
+
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Vendas elegíveis</span>
+
+                            <div class="stat-icon icon-sales">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                        </div>
+
+                        <strong id="vendas-total">—</strong>
+
+                        <small>Confirmadas ou concluídas</small>
+                    </article>
+
+                </div>
+
+
+                <!-- ENCOMENDAS RECENTES -->
+                <section class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h2>Encomendas recentes</h2>
+
+                            <p class="muted">
+                                As últimas encomendas registadas.
+                            </p>
+                        </div>
+
+                        <button
+                            class="secondary-button"
+                            type="button"
+                            data-page="encomendas"
+                        >
+                            Ver todas
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Referência</th>
+                                    <th>Cliente</th>
+                                    <th>Estado</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recent-orders">
+                                <tr>
+                                    <td colspan="4">
+                                        Os dados aparecerão aqui.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- GESTÃO DE PRODUTOS -->
+            <section id="page-produtos" class="page hidden">
+
+                <section class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h2>Produtos</h2>
+
+                            <p class="muted">
+                                Gere o catálogo da tua loja.
+                            </p>
+                        </div>
+
+                        <button
+                            id="novo-produto-button"
+                            class="primary-button"
+                            type="button"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            Novo produto
+                        </button>
+
+                    </div>
+
+
+                    <!-- FORMULÁRIO DO PRODUTO -->
+                    <div
+                        id="produto-form-container"
+                        class="form-container hidden"
+                    >
+
+                        <div class="form-heading">
+                            <h3 id="produto-form-title">Novo produto</h3>
+
+                            <p class="muted">
+                                Preenche os dados do produto.
+                            </p>
+                        </div>
+
+                        <form id="produto-form" class="product-form">
+
+                            <input type="hidden" id="produto-id">
+
+                            <div class="form-field">
+                                <label for="produto-nome">Nome</label>
+                                <input
+                                    id="produto-nome"
+                                    type="text"
+                                    minlength="2"
+                                    maxlength="150"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-field">
+                                <label for="produto-descricao">Descrição</label>
+                                <textarea
+                                    id="produto-descricao"
+                                    rows="3"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="produto-preco">Preço (Kz)</label>
+                                    <input
+                                        id="produto-preco"
+                                        type="number"
+                                        min="0.01"
+                                        step="0.01"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="produto-stock">Stock inicial</label>
+                                    <input
+                                        id="produto-stock"
+                                        type="number"
+                                        min="0"
+                                        step="1"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="produto-imagem">Imagem (URL ou caminho)</label>
+                                <input
+                                    id="produto-imagem"
+                                    type="text"
+                                    placeholder="https://... ou caminho da imagem"
+                                >
+                            </div>
+
+                            <!-- ✅ CATEGORIA -->
+                            <div class="form-field">
+                                <label for="produto-categoria">Categoria</label>
+                                <select id="produto-categoria" required>
+                                    <option value="Perfumes">Perfumes</option>
+                                    <option value="Cremes">Cremes</option>
+                                    <option value="Batons">Batons</option>
+                                    <option value="Cosmeticos">Cosmeticos</option>
+                                </select>
+                            </div>
+
+                            <!-- ✅ DESTAQUE -->
+                            <div class="form-field" style="margin-top: 4px;">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" id="produto-destaque">
+                                    ⭐ Colocar produto em destaque na página inicial
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="primary-button">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Guardar produto
+                                </button>
+                                <button
+                                    type="button"
+                                    id="cancelar-produto"
+                                    class="secondary-button"
+                                >
+                                    Cancelar
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- TABELA DE PRODUTOS -->
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Preço</th>
+                                    <th>Stock</th>
+                                    <th>Acções</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="products-list">
+                                <tr>
+                                    <td colspan="4">
+                                        A carregar produtos…
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- GESTÃO DE STOCK -->
+            <section id="page-stock" class="page hidden">
+
+                <section class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Gestão de stock</h2>
+                            <p class="muted">
+                                Consulta as quantidades disponíveis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Stock disponível</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="stock-list">
+                                <tr>
+                                    <td colspan="3">A carregar stock…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- GESTÃO DE ENCOMENDAS -->
+            <section id="page-encomendas" class="page hidden">
+
+                <section class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Encomendas</h2>
+                            <p class="muted">
+                                Acompanha as encomendas registadas
+                                e actualiza o seu estado.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Referência</th>
+                                    <th>Cliente</th>
+                                    <th>Telefone</th>
+                                    <th>Estado</th>
+                                    <th>Acções</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="orders-list">
+                                <tr>
+                                    <td colspan="5">A carregar encomendas…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </section>
+
+    <!-- JAVASCRIPT DO PAINEL -->
+    <script src="script.js"></script>
+
+</body>
+</html>

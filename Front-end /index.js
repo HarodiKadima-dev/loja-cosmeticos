@@ -171,15 +171,15 @@ botoesCategorias.forEach(botao => {
                 "categoria-active"
             );
 
-            const categoria =
-                botao.textContent
-                    .trim()
-                    .toLowerCase();
+            const categoria = botao.dataset.filtro;
 
-            const secao =
-                document.querySelector(
-                    `.produto-secao[data-categoria="${categoria}"]`
-                );
+const secoes = document.querySelectorAll(
+    ".produto-secao"
+);
+
+const secao = Array.from(secoes).find(
+    item => item.dataset.categoria.toLowerCase() === categoria.toLowerCase()
+);
 
             if (!secao) return;
 
@@ -441,7 +441,7 @@ const telefoneFormatado =
     }
 
 const mensagem = `
-Olá, Kadima Beauty! 🌸
+Olá, Kadima Beauty! 
 
 Gostaria de fazer o seguinte pedido:
 
@@ -1012,16 +1012,17 @@ function renderProdutos() {
             );
         }
 
-        const categoria =
-            String(
-                produto.categoria || ""
-            ).toLowerCase();
+        const categoria = String(
+    produto.categoria || ""
+).trim().toLowerCase();
 
-        const secaoCategoria =
-            document.querySelector(
-                `.produto-secao[data-categoria="${categoria}"]`
-            );
-
+const secaoCategoria = Array.from(
+    secoesProdutos
+).find(secao =>
+    String(secao.dataset.categoria || "")
+        .trim()
+        .toLowerCase() === categoria
+);
         if (secaoCategoria) {
             const grid =
                 secaoCategoria.querySelector(

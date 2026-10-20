@@ -1,22 +1,28 @@
+
 const express = require("express");
 const router = express.Router();
 
-//conectar o controllers
+// Controllers
 const produtoController = require("../controllers/produto.controllers.js");
-//a rota de busca de produtos (get)
-router.get("/produtos",produtoController.listarProdutos);
 
+// Middleware de autenticação
+const verificarAdmin = require("../middlewares/verificarAdmin");
+
+// Consultas públicas
+router.get("/produtos", produtoController.listarProdutos);
 router.get("/produtos/:id", produtoController.buscarProdutoPorId);
-//a rota post
-router.post("/produtos",produtoController.criarProduto);
 
-// a rota put 
-router.put("/produtos/:id", produtoController.atualizarProduto);
-//a rota delete
-router.delete("/produtos/:id", produtoController.deletarProduto);
-//rota patch
+// Operações exclusivas do administrador
+router.post("/produtos", verificarAdmin, produtoController.criarProduto);
+
+router.put("/produtos/:id", verificarAdmin, produtoController.atualizarProduto);
+
+router.delete("/produtos/:id", verificarAdmin, produtoController.deletarProduto);
+
 router.patch(
     "/produtos/:id/stock",
+    verificarAdmin,
     produtoController.atualizarStock
 );
-module.exports= router;
+
+module.exports = router;
